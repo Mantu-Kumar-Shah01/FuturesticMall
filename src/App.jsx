@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import DiscoverHorizontal from './components/DiscoverHorizontal';
@@ -11,7 +11,6 @@ import DiningCarousel from './components/DiningCarousel';
 import EventsSection from './components/EventsSection';
 import SmartVisitorTools from './components/SmartVisitorTools';
 import LocationSection from './components/LocationSection';
-import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 
 // Separate Details Pages
@@ -22,6 +21,8 @@ import ExperiencesPage from './components/Pages/ExperiencesPage';
 import EventsPage from './components/Pages/EventsPage';
 import VisitPage from './components/Pages/VisitPage';
 import ShopPage from './components/Pages/ShopPage';
+import PlayPage from './components/Pages/PlayPage';
+import UnwindPage from './components/Pages/UnwindPage';
 
 // Modals & E-Commerce Components
 import StoreDirectoryModal from './components/Modals/StoreDirectoryModal';
@@ -29,12 +30,32 @@ import ReservationModal from './components/Modals/ReservationModal';
 import ParkingModal from './components/Modals/ParkingModal';
 import HoursModal from './components/Modals/HoursModal';
 import RSVPModal from './components/Modals/RSVPModal';
+import ExperienceDetailModal from './components/Modals/ExperienceDetailModal';
 import CartDrawer from './components/Ecommerce/CartDrawer';
 import CheckoutModal from './components/Ecommerce/CheckoutModal';
 
 export default function App() {
-  // Page Router State ('home' | 'discover' | 'stores' | 'dining' | 'experiences' | 'events' | 'visit' | 'shop')
+  // Page Router State ('home' | 'discover' | 'stores' | 'dining' | 'experiences' | 'events' | 'visit' | 'shop' | 'play' | 'unwind')
   const [currentPage, setCurrentPage] = useState('home');
+
+  // Saved Scroll Y Position for restoring exact position when returning to Home
+  const [savedScrollY, setSavedScrollY] = useState(0);
+
+  // Sync with browser URL hash
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (['discover', 'stores', 'dining', 'experiences', 'events', 'visit', 'shop', 'play', 'unwind'].includes(hash)) {
+        setCurrentPage(hash);
+      } else if (hash === '' || hash === 'home') {
+        setCurrentPage('home');
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Modals & Drawers State
   const [storeModalOpen, setStoreModalOpen] = useState(false);
@@ -42,6 +63,7 @@ export default function App() {
   const [parkingModalOpen, setParkingModalOpen] = useState(false);
   const [hoursModalOpen, setHoursModalOpen] = useState(false);
   const [rsvpModalOpen, setRsvpModalOpen] = useState(false);
+  const [experienceModalOpen, setExperienceModalOpen] = useState(false);
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
 
@@ -49,6 +71,7 @@ export default function App() {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectedStoreDetail, setSelectedStoreDetail] = useState(null);
+  const [selectedExperienceId, setSelectedExperienceId] = useState('shop');
 
   // E-Commerce Cart State
   const [cartItems, setCartItems] = useState([
@@ -64,8 +87,27 @@ export default function App() {
   };
 
   const handleNavigate = (page) => {
+    if (currentPage === 'home' && page !== 'home') {
+      // Remember exact scroll Y position before leaving home
+      setSavedScrollY(window.scrollY);
+    }
+
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.hash = page === 'home' ? '' : page;
+
+    if (page === 'home') {
+      // Restore exact Y scroll position when returning to Home
+      setTimeout(() => {
+        window.scrollTo({ top: savedScrollY, behavior: 'smooth' });
+      }, 80);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleOpenExperienceDetail = (expId) => {
+    setSelectedExperienceId(expId);
+    setExperienceModalOpen(true);
   };
 
   const handleAddToCart = (product) => {
@@ -122,7 +164,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Responsive Navigation */}
+      {/* Navigation */}
       <Navbar
         onOpenSearch={() => setStoreModalOpen(true)}
         onOpenStoreDirectory={() => handleOpenStoreDirectory()}
@@ -136,14 +178,14 @@ export default function App() {
       {currentPage === 'home' && (
         <>
           <HeroSection onOpenStoreDirectory={() => handleOpenStoreDirectory()} />
-          <DiscoverHorizontal />
+          <DiscoverHorizontal onNavigate={handleNavigate} />
           <StoreDiscovery onSelectStoreDetails={(store) => handleOpenStoreDirectory(store)} />
           <ProductCatalog onAddToCart={handleAddToCart} />
           <FloorExperience />
-          <FeaturedExperiences />
+          <FeaturedExperiences onNavigate={handleNavigate} />
           <BrandShowcase onOpenStoreDirectory={() => handleOpenStoreDirectory()} />
-          <DiningCarousel onOpenReservationModal={handleOpenReservation} />
-          <EventsSection onOpenRSVPModal={handleOpenRSVP} />
+          <DiningCarousel onOpenReservationModal={handleOpenReservation} onNavigate={handleNavigate} />
+          <EventsSection onOpenRSVPModal={handleOpenRSVP} onNavigate={handleNavigate} />
           <SmartVisitorTools
             onOpenSearch={() => setStoreModalOpen(true)}
             onOpenParkingModal={() => setParkingModalOpen(true)}
@@ -151,7 +193,6 @@ export default function App() {
             onOpenStoreDirectory={() => handleOpenStoreDirectory()}
           />
           <LocationSection />
-          <FinalCTA onOpenStoreDirectory={() => handleOpenStoreDirectory()} />
         </>
       )}
 
@@ -162,6 +203,8 @@ export default function App() {
       {currentPage === 'events' && <EventsPage onNavigate={handleNavigate} onOpenRSVP={handleOpenRSVP} />}
       {currentPage === 'visit' && <VisitPage onNavigate={handleNavigate} onOpenParkingModal={() => setParkingModalOpen(true)} onOpenHoursModal={() => setHoursModalOpen(true)} />}
       {currentPage === 'shop' && <ShopPage onNavigate={handleNavigate} onAddToCart={handleAddToCart} />}
+      {currentPage === 'play' && <PlayPage onNavigate={handleNavigate} />}
+      {currentPage === 'unwind' && <UnwindPage onNavigate={handleNavigate} />}
 
       {/* Footer */}
       <Footer onNavigate={handleNavigate} />
@@ -185,6 +228,14 @@ export default function App() {
         onClose={() => setCheckoutModalOpen(false)}
         cartItems={cartItems}
         onClearCart={() => setCartItems([])}
+      />
+
+      {/* Experience Detail View Modal */}
+      <ExperienceDetailModal
+        isOpen={experienceModalOpen}
+        onClose={() => setExperienceModalOpen(false)}
+        experienceId={selectedExperienceId}
+        onNavigate={handleNavigate}
       />
 
       {/* Global Interactive Modals */}

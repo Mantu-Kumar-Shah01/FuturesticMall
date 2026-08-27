@@ -36,85 +36,79 @@ const RESTAURANTS = [
   },
 ];
 
-export default function DiningCarousel({ onOpenReservationModal }) {
-  const scrollRef = useRef(null);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
-    }
-  };
-
+export default function DiningCarousel({ onOpenReservationModal, onNavigate }) {
   return (
     <section id="dining" className="py-24 bg-[#04060b] relative border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <div className="text-[11px] font-mono tracking-widest text-slate-400 uppercase mb-2">
               06 DINING EXPERIENCE
             </div>
             <h2 className="font-editorial text-4xl sm:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight">
               COME HUNGRY. <br />
-              <span className="text-blue-500">LEAVE INSPIRED.</span>
+              <span className="text-[#19A7FF]">LEAVE INSPIRED.</span>
             </h2>
           </div>
 
-          <button className="inline-flex items-center space-x-2 px-5 py-3 rounded-full border border-slate-700 text-xs font-mono text-white tracking-widest uppercase transition-all glass-panel hover:border-blue-500">
+          <button
+            onClick={() => onNavigate && onNavigate('dining')}
+            className="inline-flex items-center space-x-2 text-xs font-mono text-slate-200 hover:text-[#19A7FF] transition-colors uppercase"
+          >
             <span>VIEW ALL RESTAURANTS</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        {/* Carousel */}
-        <div className="relative">
-          <div
-            ref={scrollRef}
-            className="flex space-x-6 overflow-x-auto no-scrollbar pb-6 snap-x snap-mandatory"
-          >
-            {RESTAURANTS.map((resto) => (
-              <div
-                key={resto.id}
-                onClick={() => onOpenReservationModal(resto)}
-                className="snap-start flex-none w-[260px] sm:w-[280px] group rounded-2xl overflow-hidden glass-panel border border-slate-800 hover:border-blue-500/60 transition-all duration-300 cursor-pointer space-y-4 p-4"
-              >
-                <div className="h-44 w-full rounded-xl overflow-hidden relative bg-slate-900">
-                  <img
-                    src={resto.image}
-                    alt={resto.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
-                  />
-                </div>
+        {/* Restaurant Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {RESTAURANTS.map((rest) => (
+            <div
+              key={rest.id}
+              onClick={() => onNavigate && onNavigate('dining')}
+              className="group rounded-3xl overflow-hidden glass-panel border border-slate-800 hover:border-[#19A7FF] hover:shadow-[0_0_25px_rgba(25,167,255,0.3)] transition-all duration-300 cursor-pointer flex flex-col justify-between p-5 space-y-4"
+            >
+              {/* Card Image */}
+              <div className="h-56 w-full rounded-2xl overflow-hidden relative bg-slate-900">
+                <img
+                  src={rest.image}
+                  alt={rest.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-75 group-hover:opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#04060b] via-transparent to-transparent" />
 
+                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/80 text-[#56D6FF] text-[9px] font-mono font-bold tracking-widest uppercase border border-slate-700">
+                  {rest.cuisine}
+                </span>
+              </div>
+
+              {/* Specs */}
+              <div className="space-y-2 flex-1 flex flex-col justify-between">
                 <div className="space-y-1">
-                  <h3 className="font-editorial text-lg font-bold text-white uppercase group-hover:text-blue-400 transition-colors">
-                    {resto.name}
+                  <h3 className="font-editorial text-xl font-bold text-white uppercase group-hover:text-[#19A7FF] transition-colors">
+                    {rest.name}
                   </h3>
-                  <div className="text-[11px] font-mono text-slate-400">{resto.cuisine}</div>
+                  <div className="text-[11px] font-mono text-slate-400">{rest.floor}</div>
                 </div>
 
-                <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-2 border-t border-slate-800/80">
-                  <div className="flex items-center space-x-1">
-                    <MapPin className="w-3 h-3 text-slate-500" />
-                    <span>{resto.floor}</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Clock className="w-3 h-3 text-slate-500" />
-                    <span>{resto.hours}</span>
-                  </div>
+                <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+                  <span className="text-[10px] font-mono text-slate-400">{rest.hours}</span>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOpenReservationModal(rest);
+                    }}
+                    className="p-2 rounded-xl bg-[#19A7FF] text-black hover:bg-[#19A7FF]/90 font-bold transition-all shadow-[0_0_15px_rgba(25,167,255,0.4)]"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-
-          <button
-            onClick={handleScroll}
-            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full glass-panel border border-slate-700 text-slate-300 hover:text-white shadow-xl"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
+            </div>
+          ))}
         </div>
       </div>
     </section>
