@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
