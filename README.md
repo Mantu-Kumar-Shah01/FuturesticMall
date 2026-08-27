@@ -38,8 +38,10 @@ npm install
 npm run dev
 ```
 
-### Production Build
+## 🌐 Cloudflare Deployment
 
-```bash
-npm run build
-```
+- **Cloudflare Pages / Workers Project**: `futuresticmall`
+- **Live Cloudflare Edge URL**: [`https://futuresticmall.pages.dev/`](https://futuresticmall.pages.dev/)
+- **Build Output Directory**: `./dist`
+- **Assets Route Config**: `wrangler.toml` (`[assets] directory = "./dist"`)
+
