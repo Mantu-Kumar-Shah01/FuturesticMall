@@ -34,7 +34,7 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="w-full max-w-xl rounded-3xl glass-panel border border-slate-700/80 shadow-2xl overflow-hidden bg-[#070910] p-8 space-y-6"
+          className="w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl glass-panel border border-slate-700/80 shadow-2xl bg-[#070910] p-5 sm:p-8 space-y-6"
         >
           {/* Header */}
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
@@ -43,7 +43,7 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
                 <Lock className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-editorial text-2xl font-bold text-white uppercase">SECURE CHECKOUT</h3>
+                <h3 className="font-editorial text-xl sm:text-2xl font-bold text-white uppercase">SECURE CHECKOUT</h3>
                 <span className="text-[10px] font-mono text-slate-400">NEXORA CONCIERGE PAY</span>
               </div>
             </div>
@@ -66,7 +66,7 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
             <form onSubmit={handleSubmitOrder} className="space-y-4">
               <div className="space-y-2">
                 <div className="text-[10px] font-mono text-[#56D6FF] uppercase font-bold">1. SHIPPING ADDRESS</div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <input
                     type="text"
                     placeholder="Full Name"

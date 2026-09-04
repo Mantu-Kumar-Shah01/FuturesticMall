@@ -76,7 +76,7 @@ export default function PlayPage({ onNavigate }) {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#04060b] text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 space-y-10 w-full">
         {/* Back Button & URL Hash */}
         <button
           onClick={() => onNavigate('home')}
@@ -93,7 +93,7 @@ export default function PlayPage({ onNavigate }) {
               <Gamepad2 className="w-4 h-4 text-[#19A7FF]" />
               <span>NEXORA CYBER PLAYSTORE & GAMING ARENA</span>
             </div>
-            <h1 className="font-editorial text-5xl font-extrabold uppercase tracking-tight">
+            <h1 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight leading-tight break-words">
               BOOK HOURLY <span className="text-[#19A7FF]">GAMING SESSIONS.</span>
             </h1>
           </div>
@@ -105,10 +105,10 @@ export default function PlayPage({ onNavigate }) {
 
         {/* Confirmation Modal Banner */}
         {bookingConfirmed && (
-          <div className="p-6 rounded-3xl glass-panel border border-emerald-500/60 bg-[#07121C] flex items-center space-x-4 animate-bounce">
-            <CheckCircle2 className="w-10 h-10 text-emerald-400 flex-none" />
+          <div className="p-4 sm:p-6 rounded-3xl glass-panel border border-emerald-500/60 bg-[#07121C] flex items-center space-x-4 animate-bounce">
+            <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400 flex-none" />
             <div>
-              <div className="font-editorial text-xl font-bold text-white uppercase">
+              <div className="font-editorial text-lg sm:text-xl font-bold text-white uppercase">
                 GAMING PASS CONFIRMED: {selectedGame.title}!
               </div>
               <div className="text-xs font-mono text-slate-300">
@@ -155,14 +155,14 @@ export default function PlayPage({ onNavigate }) {
           </div>
 
           {/* Right 40%: Hourly Booking System */}
-          <div className="lg:col-span-5 p-8 rounded-3xl glass-panel border border-slate-800 bg-[#060812] space-y-6 flex flex-col justify-between h-fit">
+          <div className="lg:col-span-5 p-5 sm:p-8 rounded-3xl glass-panel border border-slate-800 bg-[#060812] space-y-6 flex flex-col justify-between h-fit">
             <div className="space-y-4">
-              <div className="border-b border-slate-800 pb-4 flex items-center justify-between">
+              <div className="border-b border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <span className="text-[10px] font-mono text-[#56D6FF] uppercase font-bold">RESERVATION SUMMARY</span>
-                  <h3 className="font-editorial text-2xl font-bold text-white uppercase">{selectedGame.title}</h3>
+                  <h3 className="font-editorial text-xl sm:text-2xl font-bold text-white uppercase">{selectedGame.title}</h3>
                 </div>
-                <div className="text-right">
+                <div className="sm:text-right">
                   <div className="text-xs font-mono text-slate-400">BASE RATE</div>
                   <div className="text-xl font-editorial font-bold text-[#19A7FF]">${selectedGame.pricePerHour}/hr</div>
                 </div>
@@ -174,7 +174,7 @@ export default function PlayPage({ onNavigate }) {
                   <Clock className="w-3.5 h-3.5 text-[#19A7FF]" />
                   <span>1. SELECT PLAYTIME DURATION</span>
                 </label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {DURATION_OPTIONS.map((dur) => (
                     <button
                       key={dur.hours}
@@ -197,7 +197,7 @@ export default function PlayPage({ onNavigate }) {
                   <Calendar className="w-3.5 h-3.5 text-[#19A7FF]" />
                   <span>2. SELECT TIME SLOT</span>
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {TIME_SLOTS.map((slot) => (
                     <button
                       key={slot}

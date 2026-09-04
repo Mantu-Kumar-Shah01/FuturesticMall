@@ -26,14 +26,14 @@ export default function SmartVisitorTools({
   ];
 
   return (
-    <section className="py-24 bg-[#04060b] relative border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section className="py-2 sm:py-4 bg-[#04060b] relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 w-full border-t border-slate-900/80 pt-6 sm:pt-10">
         {/* Header */}
-        <div className="mb-10">
+        <div className="mb-6 sm:mb-10">
           <div className="text-[11px] font-mono tracking-widest text-slate-400 uppercase mb-2">
             08 SMART VISITOR EXPERIENCE
           </div>
-          <h2 className="font-editorial text-4xl sm:text-5xl font-extrabold text-white uppercase tracking-tight">
+          <h2 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight break-words">
             EVERYTHING YOU NEED. <br />
             <span className="text-blue-500">ONE PLACE.</span>
           </h2>

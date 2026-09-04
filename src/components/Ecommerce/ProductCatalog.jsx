@@ -72,15 +72,15 @@ export const FEATURED_PRODUCTS = [
 
 export default function ProductCatalog({ onAddToCart }) {
   return (
-    <section id="shop" className="py-24 bg-[#04060b] relative border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section id="shop" className="py-2 sm:py-4 bg-[#04060b] relative cv-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 w-full border-t border-slate-900/80 pt-6 sm:pt-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-12 gap-4 sm:gap-6">
           <div>
             <div className="text-[11px] font-mono tracking-widest text-slate-400 uppercase mb-2">
               EXCLUSIVE E-COMMERCE DROPS
             </div>
-            <h2 className="font-editorial text-4xl sm:text-5xl font-extrabold text-white uppercase tracking-tight">
+            <h2 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight break-words">
               FEATURED <span className="text-[#19A7FF]">LUXURY PRODUCTS.</span>
             </h2>
           </div>
@@ -129,7 +129,7 @@ export default function ProductCatalog({ onAddToCart }) {
                   </h3>
                 </div>
 
-                <div className="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-slate-800/80">
                   <div>
                     <div className="text-[10px] font-mono text-slate-400 uppercase">PRICE</div>
                     <div className="text-xl font-editorial font-bold text-white">${prod.price.toLocaleString()}</div>
@@ -137,7 +137,7 @@ export default function ProductCatalog({ onAddToCart }) {
 
                   <button
                     onClick={() => onAddToCart(prod)}
-                    className="inline-flex items-center space-x-2 px-5 py-3 rounded-xl bg-[#19A7FF] hover:bg-[#19A7FF]/90 text-black font-bold text-xs tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(25,167,255,0.4)]"
+                    className="inline-flex items-center justify-center space-x-2 px-4 py-3 rounded-xl bg-[#19A7FF] hover:bg-[#19A7FF]/90 text-black font-bold text-xs tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(25,167,255,0.4)] w-full sm:w-auto"
                   >
                     <ShoppingBag className="w-4 h-4" />
                     <span>ADD TO CART</span>

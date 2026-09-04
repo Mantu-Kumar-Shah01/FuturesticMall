@@ -122,7 +122,7 @@ export default function ExperienceDetailModal({ isOpen, onClose, experienceId, o
           </div>
 
           {/* Footer CTA */}
-          <div className="p-6 border-t border-slate-800/80 bg-[#04060b] flex items-center justify-between flex-none">
+          <div className="p-6 border-t border-slate-800/80 bg-[#04060b] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 flex-none">
             <div className="text-xs font-mono text-slate-400">
               OPEN DAILY • 10:00 AM - 11:00 PM
             </div>
@@ -132,7 +132,7 @@ export default function ExperienceDetailModal({ isOpen, onClose, experienceId, o
                 onClose();
                 onNavigate(data.targetPage);
               }}
-              className="px-6 py-3 rounded-xl bg-[#19A7FF] hover:bg-[#19A7FF]/90 text-black font-bold text-xs tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(25,167,255,0.4)] flex items-center space-x-2"
+              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#19A7FF] hover:bg-[#19A7FF]/90 text-black font-bold text-xs tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(25,167,255,0.4)] flex items-center justify-center space-x-2"
             >
               <span>{data.ctaText}</span>
             </button>

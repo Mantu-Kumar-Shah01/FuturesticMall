@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import DiscoverHorizontal from './components/DiscoverHorizontal';
@@ -23,6 +23,8 @@ import VisitPage from './components/Pages/VisitPage';
 import ShopPage from './components/Pages/ShopPage';
 import PlayPage from './components/Pages/PlayPage';
 import UnwindPage from './components/Pages/UnwindPage';
+import PrivacyPolicyPage from './components/Pages/PrivacyPolicyPage';
+import TermsConditionsPage from './components/Pages/TermsConditionsPage';
 
 // Modals & E-Commerce Components
 import StoreDirectoryModal from './components/Modals/StoreDirectoryModal';
@@ -35,7 +37,7 @@ import CartDrawer from './components/Ecommerce/CartDrawer';
 import CheckoutModal from './components/Ecommerce/CheckoutModal';
 
 export default function App() {
-  // Page Router State ('home' | 'discover' | 'stores' | 'dining' | 'experiences' | 'events' | 'visit' | 'shop' | 'play' | 'unwind')
+  // Page Router State ('home' | 'discover' | 'stores' | 'dining' | 'experiences' | 'events' | 'visit' | 'shop' | 'play' | 'unwind' | 'privacy' | 'terms')
   const [currentPage, setCurrentPage] = useState('home');
 
   // Saved Scroll Y Position for restoring exact position when returning to Home
@@ -45,7 +47,8 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      if (['discover', 'stores', 'dining', 'experiences', 'events', 'visit', 'shop', 'play', 'unwind'].includes(hash)) {
+      if (['discover', 'stores', 'dining', 'experiences', 'events', 'visit', 'shop', 'play', 'unwind', 'privacy', 'terms'].includes(hash)) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
         setCurrentPage(hash);
       } else if (hash === '' || hash === 'home') {
         setCurrentPage('home');
@@ -56,6 +59,17 @@ export default function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  // Synchronous Scroll Restoration BEFORE Browser Paint
+  useLayoutEffect(() => {
+    if (currentPage === 'home' && savedScrollY > 0) {
+      window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+      const timer = setTimeout(() => {
+        window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [currentPage, savedScrollY]);
 
   // Modals & Drawers State
   const [storeModalOpen, setStoreModalOpen] = useState(false);
@@ -88,20 +102,18 @@ export default function App() {
 
   const handleNavigate = (page) => {
     if (currentPage === 'home' && page !== 'home') {
-      // Remember exact scroll Y position before leaving home
-      setSavedScrollY(window.scrollY);
+      // Record exact scroll Y position before leaving home
+      const currentY = window.scrollY || window.pageYOffset || 0;
+      setSavedScrollY(currentY);
     }
 
-    setCurrentPage(page);
-    window.location.hash = page === 'home' ? '' : page;
-
-    if (page === 'home') {
-      // Restore exact Y scroll position when returning to Home
-      setTimeout(() => {
-        window.scrollTo({ top: savedScrollY, behavior: 'smooth' });
-      }, 80);
+    if (page !== 'home') {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      setCurrentPage(page);
+      window.location.hash = page;
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setCurrentPage('home');
+      window.location.hash = '';
     }
   };
 
@@ -177,13 +189,16 @@ export default function App() {
       {/* Page Routing Views */}
       {currentPage === 'home' && (
         <>
-          <HeroSection onOpenStoreDirectory={() => handleOpenStoreDirectory()} />
+          <HeroSection
+            onOpenStoreDirectory={() => handleOpenStoreDirectory()}
+            onNavigate={handleNavigate}
+          />
           <DiscoverHorizontal onNavigate={handleNavigate} />
           <StoreDiscovery onSelectStoreDetails={(store) => handleOpenStoreDirectory(store)} />
           <ProductCatalog onAddToCart={handleAddToCart} />
           <FloorExperience />
           <FeaturedExperiences onNavigate={handleNavigate} />
-          <BrandShowcase onOpenStoreDirectory={() => handleOpenStoreDirectory()} />
+          <BrandShowcase onOpenStoreDirectory={(store) => handleOpenStoreDirectory(store)} />
           <DiningCarousel onOpenReservationModal={handleOpenReservation} onNavigate={handleNavigate} />
           <EventsSection onOpenRSVPModal={handleOpenRSVP} onNavigate={handleNavigate} />
           <SmartVisitorTools
@@ -205,6 +220,8 @@ export default function App() {
       {currentPage === 'shop' && <ShopPage onNavigate={handleNavigate} onAddToCart={handleAddToCart} />}
       {currentPage === 'play' && <PlayPage onNavigate={handleNavigate} />}
       {currentPage === 'unwind' && <UnwindPage onNavigate={handleNavigate} />}
+      {currentPage === 'privacy' && <PrivacyPolicyPage onNavigate={handleNavigate} />}
+      {currentPage === 'terms' && <TermsConditionsPage onNavigate={handleNavigate} />}
 
       {/* Footer */}
       <Footer onNavigate={handleNavigate} />

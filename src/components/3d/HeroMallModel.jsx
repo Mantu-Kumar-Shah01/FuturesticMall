@@ -322,7 +322,7 @@ export default function HeroMallModel() {
         dpr={1}
         performance={{ min: 0.8 }}
         camera={{ position: [0, 2.5, 7.8], fov: 42 }}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
       >
         <ambientLight intensity={0.8} color="#0B132B" />
         <directionalLight position={[10, 15, 10]} intensity={1.8} color="#ffffff" />

@@ -7,13 +7,17 @@ const EVENTS = [
     dateDay: '27',
     dateMonth: 'SEP',
     title: 'FASHION NIGHT',
+    location: 'Main Concourse',
+    desc: 'International haute couture runway showcases featuring top global designer lines.',
     image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=500&q=70',
   },
   {
     id: 'e2',
     dateDay: '04',
     dateMonth: 'OCT',
-    title: 'LIVE MUSIC',
+    title: 'LIVE MUSIC GALA',
+    location: 'Central Plaza',
+    desc: 'Symphonic orchestra and acoustic performances under the grand dome skyline.',
     image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=500&q=70',
   },
   {
@@ -25,19 +29,46 @@ const EVENTS = [
     desc: 'Immersive installation combining digital art and interactive projections.',
     image: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=500&q=70',
   },
+  {
+    id: 'e4',
+    dateDay: '20',
+    dateMonth: 'OCT',
+    title: 'GASTRONOMY FESTIVAL',
+    location: 'Sky Deck Lounge',
+    desc: 'Michelin-starred chef tastings, wine pairings, and culinary masterclasses.',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    id: 'e5',
+    dateDay: '05',
+    dateMonth: 'NOV',
+    title: 'AUTOMOBILI SHOWCASE',
+    location: 'South Atrium',
+    desc: 'Exclusive unveiling of futuristic electric supercars and hypercar concepts.',
+    image: 'https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    id: 'e6',
+    dateDay: '15',
+    dateMonth: 'DEC',
+    title: 'WINTER LIGHTS GALA',
+    location: 'Glass Canopy',
+    desc: 'Spectacular 4K light illumination show and holiday luxury shopping festival.',
+    image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=70',
+  },
 ];
 
 export default function EventsSection({ onOpenRSVPModal, onNavigate }) {
   return (
-    <section id="events" className="py-24 bg-[#04060b] relative border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section id="events" className="py-2 sm:py-4 bg-[#04060b] relative cv-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 w-full border-t border-slate-900/80 pt-6 sm:pt-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-12 gap-4 sm:gap-6">
           <div>
             <div className="text-[11px] font-mono tracking-widest text-slate-400 uppercase mb-2">
               07 EVENTS & CULTURAL CALENDAR
             </div>
-            <h2 className="font-editorial text-4xl sm:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight">
+            <h2 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight break-words">
               EXCITING EVENTS <br />
               <span className="text-[#19A7FF]">ALL YEAR ROUND.</span>
             </h2>

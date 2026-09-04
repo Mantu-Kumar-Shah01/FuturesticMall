@@ -64,7 +64,7 @@ export default function UnwindPage({ onNavigate }) {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#04060b] text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 space-y-10 w-full">
         <button onClick={() => onNavigate('home')} className="inline-flex items-center space-x-2 text-xs font-mono text-slate-400 hover:text-[#19A7FF] uppercase">
           <ArrowLeft className="w-4 h-4" />
           <span>BACK TO MAIN MALL (URL: /#unwind)</span>
@@ -76,17 +76,17 @@ export default function UnwindPage({ onNavigate }) {
               <Sparkles className="w-4 h-4 text-emerald-400" />
               <span>NEXORA HOLISTIC ARCHITECTURAL SPA & WELLNESS</span>
             </div>
-            <h1 className="font-editorial text-5xl font-extrabold uppercase tracking-tight">
+            <h1 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight leading-tight break-words">
               RESERVE SPA <span className="text-[#19A7FF]">SANCTUARY.</span>
             </h1>
           </div>
         </div>
 
         {bookingConfirmed && (
-          <div className="p-6 rounded-3xl glass-panel border border-emerald-500/60 bg-[#07121C] flex items-center space-x-4 animate-bounce">
-            <CheckCircle2 className="w-10 h-10 text-emerald-400 flex-none" />
+          <div className="p-4 sm:p-6 rounded-3xl glass-panel border border-emerald-500/60 bg-[#07121C] flex items-center space-x-4 animate-bounce">
+            <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400 flex-none" />
             <div>
-              <div className="font-editorial text-xl font-bold text-white uppercase">
+              <div className="font-editorial text-lg sm:text-xl font-bold text-white uppercase">
                 SPA APPOINTMENT CONFIRMED: {selectedSpa.name}!
               </div>
               <div className="text-xs font-mono text-slate-300">
@@ -129,11 +129,11 @@ export default function UnwindPage({ onNavigate }) {
             </div>
           </div>
 
-          <div className="lg:col-span-5 p-8 rounded-3xl glass-panel border border-slate-800 bg-[#060812] space-y-6 flex flex-col justify-between h-fit">
+          <div className="lg:col-span-5 p-5 sm:p-8 rounded-3xl glass-panel border border-slate-800 bg-[#060812] space-y-6 flex flex-col justify-between h-fit">
             <div className="space-y-4">
               <div className="border-b border-slate-800 pb-4">
                 <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold">SELECTED TREATMENT</span>
-                <h3 className="font-editorial text-2xl font-bold text-white uppercase">{selectedSpa.name}</h3>
+                <h3 className="font-editorial text-xl sm:text-2xl font-bold text-white uppercase">{selectedSpa.name}</h3>
               </div>
 
               <div className="space-y-2">
@@ -141,7 +141,7 @@ export default function UnwindPage({ onNavigate }) {
                   <Calendar className="w-3.5 h-3.5 text-emerald-400" />
                   <span>SELECT APPOINTMENT TIME</span>
                 </label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {TIME_SLOTS.map((slot) => (
                     <button
                       key={slot}

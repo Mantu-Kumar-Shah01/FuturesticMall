@@ -11,6 +11,14 @@ const RESTAURANTS = [
     image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=70',
   },
   {
+    id: 'nobu',
+    name: 'NOBU SKY DINING',
+    cuisine: 'Japanese Fine Dining',
+    floor: 'Level 03',
+    hours: '12:00 PM - 11:00 PM',
+    image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=500&q=70',
+  },
+  {
     id: 'spiceaffair',
     name: 'SPICE AFFAIR',
     cuisine: 'Indian Kitchen',
@@ -21,7 +29,7 @@ const RESTAURANTS = [
   {
     id: 'sushiart',
     name: 'SUSHI ART',
-    cuisine: 'Japanese',
+    cuisine: 'Japanese Omakase',
     floor: 'Level 03',
     hours: '12:00 PM - 11:00 PM',
     image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=500&q=70',
@@ -29,24 +37,32 @@ const RESTAURANTS = [
   {
     id: 'caffeverde',
     name: 'CAFFE VERDE',
-    cuisine: 'Italian',
+    cuisine: 'Italian Roastery',
     floor: 'Level 01',
     hours: '08:00 AM - 10:00 PM',
     image: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=500&q=70',
+  },
+  {
+    id: 'lecomptoir',
+    name: 'LE COMPTOIR DE PARIS',
+    cuisine: 'French Brasserie',
+    floor: 'Level 02',
+    hours: '10:00 AM - 10:30 PM',
+    image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=500&q=70',
   },
 ];
 
 export default function DiningCarousel({ onOpenReservationModal, onNavigate }) {
   return (
-    <section id="dining" className="py-24 bg-[#04060b] relative border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section id="dining" className="py-2 sm:py-4 bg-[#04060b] relative cv-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 w-full border-t border-slate-900/80 pt-6 sm:pt-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-12 gap-4 sm:gap-6">
           <div>
             <div className="text-[11px] font-mono tracking-widest text-slate-400 uppercase mb-2">
               06 DINING EXPERIENCE
             </div>
-            <h2 className="font-editorial text-4xl sm:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight">
+            <h2 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight break-words">
               COME HUNGRY. <br />
               <span className="text-[#19A7FF]">LEAVE INSPIRED.</span>
             </h2>

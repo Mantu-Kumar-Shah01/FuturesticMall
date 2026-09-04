@@ -18,7 +18,7 @@ export default function ParkingModal({ isOpen, onClose }) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="w-full max-w-xl rounded-3xl glass-panel border border-slate-700/80 shadow-2xl overflow-hidden bg-[#0a0c12] p-8 space-y-6"
+          className="w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl glass-panel border border-slate-700/80 shadow-2xl bg-[#0a0c12] p-5 sm:p-8 space-y-6"
         >
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div className="flex items-center space-x-3">
@@ -26,7 +26,7 @@ export default function ParkingModal({ isOpen, onClose }) {
                 <Car className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-editorial text-2xl font-bold text-white uppercase">
+                <h3 className="font-editorial text-xl sm:text-2xl font-bold text-white uppercase">
                   LIVE PARKING METRICS
                 </h3>
                 <span className="text-[10px] font-mono text-slate-400">REAL-TIME MULTI-STORY TRACKER</span>
@@ -40,7 +40,7 @@ export default function ParkingModal({ isOpen, onClose }) {
           <div className="space-y-4">
             {floors.map((fl, idx) => (
               <div key={idx} className="p-4 rounded-2xl glass-panel border border-slate-800 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-mono">
                   <span className="font-bold text-white tracking-wider">{fl.name}</span>
                   <span className="text-emerald-400 font-bold flex items-center space-x-1">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
@@ -49,7 +49,7 @@ export default function ParkingModal({ isOpen, onClose }) {
                 </div>
 
                 <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                  <span>SPOTS AVAILABLE: <strong className="text-cyan-300 text-sm">{fl.free}</strong> / {fl.total}</span>
+                  <span>SPOTS: <strong className="text-cyan-300 text-sm">{fl.free}</strong> / {fl.total}</span>
                   <span>{Math.round((fl.free / fl.total) * 100)}% CAPACITY</span>
                 </div>
 
@@ -63,12 +63,12 @@ export default function ParkingModal({ isOpen, onClose }) {
             ))}
           </div>
 
-          <div className="p-4 rounded-2xl bg-cyan-950/20 border border-cyan-500/30 flex items-center justify-between text-xs font-mono text-cyan-300">
+          <div className="p-4 rounded-2xl bg-cyan-950/20 border border-cyan-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-cyan-300">
             <div className="flex items-center space-x-2">
-              <Zap className="w-4 h-4 text-cyan-400" />
+              <Zap className="w-4 h-4 text-cyan-400 flex-none" />
               <span>48 ULTRA-FAST EV CHARGERS READY</span>
             </div>
-            <button className="px-4 py-1.5 rounded-lg bg-cyan-500 text-black font-bold uppercase text-[10px]">
+            <button className="px-4 py-2 sm:py-1.5 rounded-lg bg-cyan-500 text-black font-bold uppercase text-[10px] w-full sm:w-auto text-center">
               RESERVE VALET
             </button>
           </div>

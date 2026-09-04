@@ -32,14 +32,14 @@ export default function RSVPModal({ isOpen, onClose, event }) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="w-full max-w-lg rounded-3xl glass-panel border border-slate-700/80 shadow-2xl overflow-hidden bg-[#0a0c12] p-8 space-y-6"
+          className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl glass-panel border border-slate-700/80 shadow-2xl bg-[#0a0c12] p-5 sm:p-8 space-y-6"
         >
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div>
               <div className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
                 EVENT PASS REGISTRATION
               </div>
-              <h3 className="font-editorial text-2xl font-bold text-white uppercase">
+              <h3 className="font-editorial text-xl sm:text-2xl font-bold text-white uppercase">
                 {event.title}
               </h3>
             </div>

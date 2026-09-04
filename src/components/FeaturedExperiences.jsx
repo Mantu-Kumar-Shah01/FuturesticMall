@@ -34,10 +34,10 @@ const EXPERIENCES = [
 
 export default function FeaturedExperiences({ onNavigate }) {
   return (
-    <section id="experiences" className="py-24 bg-[#04060b] relative border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section id="experiences" className="py-2 sm:py-4 bg-[#04060b] relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 w-full border-t border-slate-900/80 pt-6 sm:pt-10">
         {/* Header */}
-        <div className="mb-10 flex items-center justify-between">
+        <div className="mb-6 sm:mb-10 flex items-center justify-between">
           <div className="text-[11px] font-mono tracking-widest text-slate-400 uppercase">
             04 FEATURED EXPERIENCES
           </div>
