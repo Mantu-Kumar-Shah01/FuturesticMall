@@ -11,7 +11,7 @@ const RESTAURANTS = [
 export default function DiningPage({ onNavigate, onOpenReservation }) {
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#04060b] text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 space-y-8 w-full">
         <button onClick={() => onNavigate('home')} className="inline-flex items-center space-x-2 text-xs font-mono text-slate-400 hover:text-[#19A7FF] uppercase">
           <ArrowLeft className="w-4 h-4" />
           <span>BACK TO HOME</span>
@@ -19,7 +19,7 @@ export default function DiningPage({ onNavigate, onOpenReservation }) {
 
         <div className="space-y-2 max-w-2xl">
           <div className="text-[11px] font-mono tracking-widest text-[#56D6FF] uppercase">CULINARY COLLECTION</div>
-          <h1 className="font-editorial text-5xl font-extrabold uppercase tracking-tight">COME HUNGRY. <span className="text-[#19A7FF]">LEAVE INSPIRED.</span></h1>
+          <h1 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight leading-tight break-words">COME HUNGRY. <span className="text-[#19A7FF]">LEAVE INSPIRED.</span></h1>
           <p className="text-slate-400 text-xs font-light">Explore world-class gastronomy, rooftop sky bars, and artisan cafes across our 3D destination.</p>
         </div>
 

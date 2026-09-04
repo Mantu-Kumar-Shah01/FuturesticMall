@@ -7,8 +7,8 @@ export default function LocationSection() {
   };
 
   return (
-    <section id="visit" className="py-24 bg-[#04060b] relative border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section id="visit" className="py-2 sm:py-4 bg-[#04060b] relative cv-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 w-full border-t border-slate-900/80 pt-6 sm:pt-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column Details */}
           <div className="lg:col-span-4 space-y-6">
@@ -16,7 +16,7 @@ export default function LocationSection() {
               <div className="text-[11px] font-mono tracking-widest text-slate-400 uppercase mb-2">
                 09 VISIT US
               </div>
-              <h2 className="font-editorial text-4xl font-extrabold text-white uppercase tracking-tight">
+              <h2 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight break-words">
                 WE ARE HERE <br />
                 <span className="text-blue-500">FOR YOU.</span>
               </h2>
@@ -55,7 +55,7 @@ export default function LocationSection() {
           </div>
 
           {/* Center Column: Digital Map Graphic */}
-          <div className="lg:col-span-5 h-[360px] rounded-3xl overflow-hidden glass-panel border border-slate-800 relative flex items-center justify-center p-6 bg-[#060810]">
+          <div className="lg:col-span-5 h-[260px] sm:h-[360px] rounded-3xl overflow-hidden glass-panel border border-slate-800 relative flex items-center justify-center p-6 bg-[#060810]">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b25_1px,transparent_1px),linear-gradient(to_bottom,#1e293b25_1px,transparent_1px)] bg-[size:2rem_2rem]" />
 
             <svg className="w-full h-full opacity-50" viewBox="0 0 600 400" fill="none">

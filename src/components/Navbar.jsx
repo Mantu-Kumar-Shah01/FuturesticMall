@@ -33,17 +33,17 @@ export default function Navbar({ onOpenSearch, onOpenStoreDirectory, cartCount =
             : 'py-5 bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-between w-full">
           {/* Logo */}
-          <button onClick={() => onNavigate('home')} className="flex items-center space-x-3 group text-left">
-            <div className="w-7 h-7 rounded-lg bg-[#19A7FF] flex items-center justify-center font-bold text-black text-xs shadow-[0_0_15px_#19A7FF]">
+          <button onClick={() => onNavigate('home')} className="flex items-center space-x-2 sm:space-x-3 group text-left flex-none">
+            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#19A7FF] flex items-center justify-center font-bold text-black text-xs shadow-[0_0_15px_#19A7FF]">
               N
             </div>
             <div className="flex flex-col">
-              <span className="font-editorial text-lg tracking-[0.2em] font-extrabold text-white group-hover:text-[#19A7FF] transition-colors">
+              <span className="font-editorial text-base sm:text-lg tracking-wider sm:tracking-[0.2em] font-extrabold text-white group-hover:text-[#19A7FF] transition-colors">
                 NEXORA
               </span>
-              <span className="text-[8px] font-mono tracking-widest text-slate-400 uppercase -mt-1">
+              <span className="text-[7px] sm:text-[8px] font-mono tracking-widest text-slate-400 uppercase -mt-1">
                 THE CITY MALL
               </span>
             </div>
@@ -65,17 +65,17 @@ export default function Navbar({ onOpenSearch, onOpenStoreDirectory, cartCount =
           </nav>
 
           {/* Right Controls */}
-          <div className="flex items-center space-x-3 text-xs font-mono">
+          <div className="flex items-center space-x-2 sm:space-x-3 text-xs font-mono flex-none">
             {/* Cart Button */}
             <button
               onClick={onOpenCart}
-              className="relative px-3 py-2 rounded-xl glass-panel text-slate-300 hover:text-white border border-slate-700 hover:border-[#19A7FF] transition-all flex items-center space-x-2"
+              className="relative px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl glass-panel text-slate-300 hover:text-white border border-slate-700 hover:border-[#19A7FF] transition-all flex items-center space-x-1.5 sm:space-x-2"
               title="Shopping Cart"
             >
-              <ShoppingBag className="w-4 h-4 text-[#19A7FF]" />
+              <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#19A7FF]" />
               <span className="hidden sm:inline font-bold">Cart</span>
               {cartCount > 0 && (
-                <span className="w-5 h-5 rounded-full bg-[#19A7FF] text-black font-bold text-[10px] flex items-center justify-center shadow-[0_0_10px_#19A7FF]">
+                <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#19A7FF] text-black font-bold text-[9px] sm:text-[10px] flex items-center justify-center shadow-[0_0_10px_#19A7FF]">
                   {cartCount}
                 </span>
               )}
@@ -83,10 +83,10 @@ export default function Navbar({ onOpenSearch, onOpenStoreDirectory, cartCount =
 
             <button
               onClick={onOpenSearch}
-              className="flex items-center space-x-1.5 px-3 py-2 rounded-xl glass-panel text-slate-300 hover:text-white border border-slate-800 transition-colors"
+              className="hidden sm:flex items-center space-x-1.5 px-3 py-2 rounded-xl glass-panel text-slate-300 hover:text-white border border-slate-800 transition-colors"
             >
               <Search className="w-4 h-4 text-[#19A7FF]" />
-              <span className="hidden sm:inline">Search</span>
+              <span>Search</span>
             </button>
 
             <button
@@ -100,7 +100,7 @@ export default function Navbar({ onOpenSearch, onOpenStoreDirectory, cartCount =
             {/* Mobile Menu Circle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden w-9 h-9 rounded-full border border-slate-700/80 flex items-center justify-center text-slate-300 hover:border-white hover:text-white transition-all glass-panel"
+              className="lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-slate-700/80 flex items-center justify-center text-slate-300 hover:border-white hover:text-white transition-all glass-panel"
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
@@ -115,9 +115,9 @@ export default function Navbar({ onOpenSearch, onOpenStoreDirectory, cartCount =
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 top-[65px] z-40 bg-[#05070d]/95 backdrop-blur-xl px-8 py-10 flex flex-col justify-between lg:hidden border-b border-slate-800"
+            className="fixed inset-0 top-[65px] z-40 bg-[#05070d]/95 backdrop-blur-xl px-6 py-8 sm:px-8 sm:py-10 flex flex-col justify-between lg:hidden border-b border-slate-800 max-h-[calc(100vh-65px)] overflow-y-auto space-y-6"
           >
-            <div className="flex flex-col space-y-5">
+            <div className="flex flex-col space-y-4 sm:space-y-5">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
@@ -125,7 +125,7 @@ export default function Navbar({ onOpenSearch, onOpenStoreDirectory, cartCount =
                     onNavigate(link.id);
                     setMobileMenuOpen(false);
                   }}
-                  className="font-editorial text-2xl font-bold tracking-widest text-slate-200 hover:text-[#19A7FF] uppercase flex items-center justify-between border-b border-slate-800 pb-3 text-left"
+                  className="font-editorial text-xl sm:text-2xl font-bold tracking-widest text-slate-200 hover:text-[#19A7FF] uppercase flex items-center justify-between border-b border-slate-800 pb-3 text-left"
                 >
                   <span>{link.label}</span>
                   <ArrowUpRight className="w-5 h-5 text-slate-500" />
@@ -138,7 +138,7 @@ export default function Navbar({ onOpenSearch, onOpenStoreDirectory, cartCount =
                 setMobileMenuOpen(false);
                 onNavigate('shop');
               }}
-              className="w-full py-4 rounded-xl bg-[#19A7FF] text-black font-bold tracking-widest uppercase text-center text-xs shadow-[0_0_20px_rgba(25,167,255,0.4)]"
+              className="w-full py-4 rounded-xl bg-[#19A7FF] text-black font-bold tracking-widest uppercase text-center text-xs shadow-[0_0_20px_rgba(25,167,255,0.4)] flex-none"
             >
               SHOP ONLINE STORE →
             </button>

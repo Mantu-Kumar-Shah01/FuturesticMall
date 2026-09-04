@@ -6,16 +6,36 @@
     --font-sans: 'Plus Jakarta Sans', sans-serif;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     font-family: var(--font-sans);
-    background-color: #08080a;
+    background-color: #04060b;
     color: #f1f5f9;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, .font-editorial {
     font-family: var(--font-syne);
   }
+}
+
+/* GPU Hardware Acceleration Helpers */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Off-screen Section Rendering Performance */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 450px;
 }
 
 /* Custom Scrollbar */

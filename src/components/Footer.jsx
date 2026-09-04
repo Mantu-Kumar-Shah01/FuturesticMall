@@ -15,8 +15,8 @@ export default function Footer({ onNavigate }) {
   };
 
   return (
-    <footer className="bg-[#030408] text-slate-400 border-t border-slate-900 pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <footer className="bg-[#030408] text-slate-400 py-4 sm:py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 w-full border-t border-slate-900/80 pt-8 pb-6 sm:pt-12 sm:pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-16 border-b border-slate-900">
           {/* Brand Col */}
           <div className="lg:col-span-3 space-y-3">
@@ -117,8 +117,18 @@ export default function Footer({ onNavigate }) {
             © 2026 NEXORA CITY MALL. ALL RIGHTS RESERVED.
           </div>
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-slate-400">PRIVACY POLICY</a>
-            <a href="#" className="hover:text-slate-400">TERMS & CONDITIONS</a>
+            <button
+              onClick={() => onNavigate && onNavigate('privacy')}
+              className="hover:text-slate-400 cursor-pointer uppercase transition-colors"
+            >
+              PRIVACY POLICY
+            </button>
+            <button
+              onClick={() => onNavigate && onNavigate('terms')}
+              className="hover:text-slate-400 cursor-pointer uppercase transition-colors"
+            >
+              TERMS & CONDITIONS
+            </button>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ export default function DiscoverPage({ onNavigate }) {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#04060b] text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 space-y-12 w-full">
         {/* Back Navigation Button */}
         <button
           onClick={() => onNavigate('home')}
@@ -26,7 +26,7 @@ export default function DiscoverPage({ onNavigate }) {
           <div className="text-[11px] font-mono tracking-widest text-[#56D6FF] uppercase">
             DISCOVER NEXORA — THE ARCHITECTURAL VISION
           </div>
-          <h1 className="font-editorial text-5xl sm:text-6xl font-extrabold uppercase tracking-tight leading-tight">
+          <h1 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight leading-tight break-words">
             MORE THAN A MALL. <br />
             <span className="text-[#19A7FF]">A DESTINATION.</span>
           </h1>

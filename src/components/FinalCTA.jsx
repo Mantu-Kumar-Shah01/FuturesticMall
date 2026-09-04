@@ -16,7 +16,7 @@ export default function FinalCTA() {
   };
 
   return (
-    <section className="relative py-32 bg-[#04060b] overflow-hidden border-t border-slate-900 text-left flex items-center">
+    <section className="relative py-12 sm:py-32 bg-[#04060b] overflow-hidden border-t border-slate-900 text-left flex items-center">
       {/* Background Motion Blur Lights */}
       <img
         src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1600&q=70"
@@ -25,8 +25,8 @@ export default function FinalCTA() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#04060b] via-[#04060b]/80 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10 space-y-6">
-        <h2 className="font-editorial text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white uppercase tracking-tight leading-[0.98]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 relative z-10 space-y-6 w-full">
+        <h2 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight break-words">
           YOUR NEXT <br />
           <span className="text-blue-500">EXPERIENCE</span> <br />
           STARTS HERE.
@@ -34,7 +34,7 @@ export default function FinalCTA() {
 
         <button
           onClick={handlePlanVisit}
-          className="group inline-flex items-center space-x-3 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs tracking-[0.2em] uppercase transition-all shadow-[0_0_35px_rgba(37,99,235,0.5)]"
+          className="group inline-flex items-center justify-center space-x-3 px-6 sm:px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs tracking-[0.2em] uppercase transition-all shadow-[0_0_35px_rgba(37,99,235,0.5)] w-full sm:w-auto"
         >
           <span>PLAN YOUR VISIT</span>
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

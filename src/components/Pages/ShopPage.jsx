@@ -16,7 +16,7 @@ export default function ShopPage({ onNavigate, onAddToCart }) {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#04060b] text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 space-y-8 w-full">
         <button onClick={() => onNavigate('home')} className="inline-flex items-center space-x-2 text-xs font-mono text-slate-400 hover:text-[#19A7FF] uppercase">
           <ArrowLeft className="w-4 h-4" />
           <span>BACK TO HOME</span>
@@ -25,7 +25,7 @@ export default function ShopPage({ onNavigate, onAddToCart }) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-2">
             <div className="text-[11px] font-mono tracking-widest text-[#56D6FF] uppercase">E-COMMERCE LUXURY DROPS</div>
-            <h1 className="font-editorial text-5xl font-extrabold uppercase tracking-tight">SHOP <span className="text-[#19A7FF]">FLAGSHIP PRODUCTS.</span></h1>
+            <h1 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight leading-tight break-words">SHOP <span className="text-[#19A7FF]">FLAGSHIP PRODUCTS.</span></h1>
           </div>
 
           <div className="relative w-full md:w-80">

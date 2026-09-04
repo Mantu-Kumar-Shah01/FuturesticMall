@@ -16,7 +16,7 @@ export default function StoresPage({ onNavigate, onOpenStoreModal }) {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#04060b] text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 space-y-8 w-full">
         <button
           onClick={() => onNavigate('home')}
           className="inline-flex items-center space-x-2 text-xs font-mono text-slate-400 hover:text-[#19A7FF] transition-colors uppercase"
@@ -30,7 +30,7 @@ export default function StoresPage({ onNavigate, onOpenStoreModal }) {
             <div className="text-[11px] font-mono tracking-widest text-[#56D6FF] uppercase">
               STORE DIRECTORY — 180+ GLOBAL BRANDS
             </div>
-            <h1 className="font-editorial text-5xl font-extrabold uppercase tracking-tight">
+            <h1 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight leading-tight break-words">
               FIND YOUR <span className="text-[#19A7FF]">BOUTIQUE.</span>
             </h1>
           </div>

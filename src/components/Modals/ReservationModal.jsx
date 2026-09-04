@@ -32,14 +32,14 @@ export default function ReservationModal({ isOpen, onClose, restaurant }) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="w-full max-w-lg rounded-3xl glass-panel border border-slate-700/80 shadow-2xl overflow-hidden bg-[#0a0c12] p-8 space-y-6"
+          className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl glass-panel border border-slate-700/80 shadow-2xl bg-[#0a0c12] p-5 sm:p-8 space-y-6"
         >
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div>
               <div className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
                 RESERVATION CONCIERGE
               </div>
-              <h3 className="font-editorial text-2xl font-bold text-white uppercase">
+              <h3 className="font-editorial text-xl sm:text-2xl font-bold text-white uppercase">
                 {restaurant.name}
               </h3>
             </div>
@@ -65,13 +65,13 @@ export default function ReservationModal({ isOpen, onClose, restaurant }) {
             <form onSubmit={handleBook} className="space-y-4">
               <div className="space-y-1">
                 <label className="text-[11px] font-mono text-slate-400 uppercase">GUESTS</label>
-                <div className="flex items-center space-x-2">
+                <div className="grid grid-cols-3 sm:flex items-center gap-2">
                   {[1, 2, 4, 6, 8].map((g) => (
                     <button
                       type="button"
                       key={g}
                       onClick={() => setGuests(g)}
-                      className={`flex-1 py-2 rounded-xl text-xs font-mono font-bold border transition-all ${
+                      className={`py-2 px-2 rounded-xl text-xs font-mono font-bold border transition-all text-center ${
                         guests === g
                           ? 'bg-cyan-500 text-black border-cyan-400'
                           : 'glass-panel text-slate-300 border-slate-800'

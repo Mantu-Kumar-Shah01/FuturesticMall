@@ -31,15 +31,15 @@ export default function FloorExperience() {
   const currentLvl = LEVELS.find((l) => l.id === activeLevel);
 
   return (
-    <section id="floors" className="py-24 bg-[#04060b] relative border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10">
+    <section id="floors" className="py-2 sm:py-4 bg-[#04060b] relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 w-full border-t border-slate-900/80 pt-6 sm:pt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center mb-6 sm:mb-10">
           {/* Left Column Text */}
           <div className="lg:col-span-4 space-y-4">
             <div className="text-[11px] font-mono tracking-widest text-slate-400 uppercase">
               03 EXPLORE EVERY LEVEL
             </div>
-            <h2 className="font-editorial text-4xl font-extrabold text-white uppercase tracking-tight">
+            <h2 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight break-normal">
               EXPLORE EVERY LEVEL.
             </h2>
             <p className="text-slate-400 text-xs font-light leading-relaxed max-w-sm">
@@ -87,7 +87,7 @@ export default function FloorExperience() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full h-[460px] lg:h-[520px] rounded-3xl overflow-hidden glass-panel border border-slate-800 p-8 flex flex-col justify-between"
+              className="relative w-full min-h-[360px] h-auto rounded-3xl overflow-hidden glass-panel border border-slate-800 p-5 sm:p-8 flex flex-col justify-between space-y-12 lg:space-y-0"
             >
               <img
                 src={currentLvl.image}
@@ -97,14 +97,14 @@ export default function FloorExperience() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#04060b] via-[#04060b]/40 to-transparent" />
 
               <div className="relative z-10 flex items-center justify-between">
-                <span className="px-3 py-1 rounded-md glass-panel border border-[#19A7FF]/40 text-[#56D6FF] text-[10px] font-mono font-bold uppercase tracking-widest">
+                <span className="px-3 py-1 rounded-md glass-panel border border-[#19A7FF]/40 text-[#56D6FF] text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-widest">
                   FEATURED LEVEL SPOTLIGHT
                 </span>
                 <span className="text-xs font-mono text-slate-300">{currentLvl.name} TIER</span>
               </div>
 
               <div className="relative z-10 space-y-2 max-w-xl">
-                <h3 className="font-editorial text-4xl font-extrabold text-white uppercase tracking-tight">
+                <h3 className="font-editorial text-2xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
                   {currentLvl.subtitle}
                 </h3>
                 <p className="text-slate-300 text-xs sm:text-sm font-light leading-relaxed">
